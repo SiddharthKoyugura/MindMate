@@ -8,10 +8,17 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route("/table")
+def table():
+    return render_template("tables-general.html")
 
+@app.route("/chart")
+def chart():
+    return render_template("charts.html")
 
-
-
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
 
 
 
