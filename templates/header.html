@@ -36,7 +36,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{{ url_for('home') }}" class="logo d-flex align-items-center">
         <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
         <span class="d-none d-lg-block">MindMate</span>
       </a>
@@ -276,13 +276,13 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('table') }}">
               <i class="bi bi-layout-text-window-reverse"></i>
-              <span>General Tables</span>
+              <span>Activity</span>
         </a>
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('chart') }}">
-          <i class="bi bi-bar-chart"></i><span>ApexCharts</span>
+          <i class="bi bi-bar-chart"></i><span>Stats</span>
         </a>
       </li><!-- End Charts Nav -->
 
@@ -292,6 +292,12 @@
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url_for('login') }}">
+          <i class="bi bi-person"></i>
+          <span>Logout</span>
+        </a>
+      </li>
 
     </ul>
 
