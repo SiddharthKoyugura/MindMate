@@ -1,1 +1,1 @@
-### A mental health webApp we develop at Elite Hackathon Challenge
+### A mental health webApp we built at Elite Hackathon Challenge
