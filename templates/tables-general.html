@@ -2,36 +2,8 @@
 
   <main id="main" class="main">
 
-
     <section class="section">
       <div class="row">
-        <div class="col-lg-6">
-
-  
-            
-            </div>
-          </div>
-
-    
-
-            </div>
-          </div>
-  
-
-            </div>
-          </div>
-  
-            </div>
-          </div>
-    
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-          </div>
-
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Previous Records</h5>
@@ -55,8 +27,8 @@
                   </tr>
                   <tr>
                     <th scope="row">2</th>
-                    <td>Pending Personality Development Session</td>
-                    <td>Yet to complete</td>
+                    <td>Pending Personality Development </td>
+                    <td>Yet to be completed</td>
                     <td>Pending</td>
                     
                   </tr>
@@ -71,24 +43,20 @@
                     <td>Missed an Virtual Session</td>
                     <td>Incomplete</td>
                     <td>Incomplete</td>
-                    
+
                   </tr>
+                    {% for activity in activites: %}
+                      <tr>
+                        <th scope="row">{{ activity.get("s.no") }}</th>
+                        <td>{{ activity.get("activity") }}</td>
+                        <td>{{ activity.get("time") }}</td>
+                        <td>{{ activity.get("date") }}</td>
+                      </tr>
+                    {% endfor %}
                 </tbody>
               </table>
-              <!-- End Table with hoverable rows -->
-
             </div>
           </div>
-           
-
-            </div>
-          </div>
-         
-            
-                  </tr>
-                </tbody>
-              </table>
-        
 
             </div>
           </div>
@@ -96,6 +64,28 @@
         </div>
       </div>
     </section>
+    <form class="row g-3 needs-validation" action="{{ url_for('table') }}" method="post" novalidate>
+
+      <div class="col-12">
+        <label for="yourEmail" class="form-label">Activity</label>
+        <input type="text" name="activity" class="form-control" id="yourEmail" required>
+        <div class="invalid-feedback">Please fill out this section</div>
+      </div>
+
+      <div class="col-12">
+        <label for="yourPassword" class="form-label">Status</label>
+        <select name="status" class="form-control" id="yourPassword" required>
+          <option value="2">Completed</option>
+          <option value="1">Pending</option>
+          <option value="0">Failed to complete</option>
+        </select>
+        <div class="invalid-feedback">Please enter your password!</div>
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-primary w-100" type="submit">Nail it</button>
+      </div>
+    </form>
 
   </main><!-- End #main -->
 

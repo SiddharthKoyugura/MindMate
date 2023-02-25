@@ -1,5 +1,6 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 
 app = Flask(__name__)
@@ -20,13 +21,38 @@ class User(db.Model):
 
 # db.create_all()
 
+activites = []
+
 @app.route("/home")
 def home():
     return render_template("index.html")
 
-@app.route("/table")
+@app.route("/table", methods=["GET", "POST"])
 def table():
-    return render_template("tables-general.html")
+    if request.method == "POST":
+        status = request.form.get("status")
+        time_status, date_status = '', ''
+        if status == "2":
+            now = datetime.datetime.now().time()
+            time = now.strftime("%H:%M:%S")
+            now = datetime.datetime.now().date()
+            date = now.strftime("%Y-%m-%d")
+            time_status=time
+            date_status = date
+        elif status == "1":
+            time_status, date_status = "Pending", "Pending"
+        else:
+            time_status, date_status = "Incomplete", "Incomplete"
+
+        activites.append({
+            "s.no":len(activites)+5,
+            "activity":request.form.get("activity"), 
+            "time":time_status,
+            "date":date_status
+            })
+        return redirect("table")
+    print(activites)
+    return render_template("tables-general.html", activites=activites)
 
 @app.route("/chart")
 def chart():
